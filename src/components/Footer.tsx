@@ -1,64 +1,45 @@
 
 import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+  const { ref, isVisible } = useScrollReveal(0.1);
+  
   return (
-    <footer className="bg-card py-10 px-6">
-      <div className="max-w-7xl mx-auto">
+    <footer className="border-t border-border py-10 px-6" ref={ref}>
+      <div className={`max-w-7xl mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <h2 className="text-2xl font-bold gradient-text">Harish</h2>
-            <p className="text-muted-foreground mt-2">Creating practical AI-powered software</p>
-            <p className="text-muted-foreground mt-2">Updated January 2026</p>
+            <h2 className="text-xl font-bold">Harish <span className="text-primary">D</span></h2>
+            <p className="text-muted-foreground text-sm mt-1">Building the future with AI and code</p>
           </div>
-
-          <div className="flex space-x-4">
-            <a
-              href="https://github.com/Harish-D25"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-secondary transition-colors"
-              aria-label="GitHub"
-            >
-              <GithubIcon className="h-6 w-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/harish-d-046311296/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-secondary transition-colors"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon className="h-6 w-6" />
-            </a>
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=harish.hema04@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-secondary transition-colors"
-              aria-label="Email"
-            >
-
-              <MailIcon className="h-6 w-6" />
-            </a>
+          
+          <div className="flex space-x-3">
+            {[
+              { icon: GithubIcon, href: "https://github.com/Harishd-dev", label: "GitHub" },
+              { icon: LinkedinIcon, href: "https://www.linkedin.com/in/harishd-dev/ ", label: "LinkedIn" },
+              { icon: MailIcon, href: "mailto:harish.hema04@gmail.com", label: "Email" },
+            ].map((item) => (
+              <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer"
+                className="p-2 text-muted-foreground hover:text-foreground hover:scale-110 transition-all" aria-label={item.label}>
+                <item.icon className="h-5 w-5" />
+              </a>
+            ))}
           </div>
         </div>
-
+        
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-muted-foreground text-sm">
-            &copy; {currentYear} Harish. All rights reserved.
+          <p className="text-muted-foreground text-xs">
+            &copy; {currentYear} Harish D. All rights reserved.
           </p>
-
-          <div className="mt-4 md:mt-0">
-            <nav className="flex space-x-6 text-sm">
-              <a href="#about" className="hover:text-primary transition-colors">About</a>
-              <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-              <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-              <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-            </nav>
-          </div>
+          <nav className="flex space-x-6 text-xs mt-4 md:mt-0">
+            {["about", "projects", "skills", "contact"].map((item) => (
+              <a key={item} href={`#${item}`} className="text-muted-foreground hover:text-foreground transition-colors capitalize">
+                {item}
+              </a>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,83 +7,83 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 7%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 98%;
-    --popover-foreground: 0 0% 7%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 210 100% 50%;
+    --primary: 0 72% 55%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 215 30% 95%;
-    --secondary-foreground: 0 0% 7%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 215 30% 90%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 210 100% 50%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 170 80% 50%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 215 30% 90%;
-    --input: 215 30% 90%;
-    --ring: 210 100% 50%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 72% 55%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 30% 95%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 210 100% 50%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 72% 55%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 215 30% 90%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 215 30% 85%;
-    --sidebar-ring: 210 100% 50%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 72% 55%;
   }
 
   .dark {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 210 100% 50%;
+    --primary: 0 72% 55%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 215 30% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 215 30% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 210 100% 50%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 170 80% 50%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 215 30% 20%;
-    --input: 215 30% 20%;
-    --ring: 210 100% 50%;
-    
-    --sidebar-background: 220 30% 5%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 72% 55%;
+
+    --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary: 0 72% 55%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 215 30% 12%;
+    --sidebar-accent: 0 0% 12%;
     --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 215 30% 15%;
-    --sidebar-ring: 210 100% 50%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 72% 55%;
   }
 }
 
@@ -94,25 +94,21 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Syne', sans-serif;
   }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-shift bg-300;
-  }
-  
-  .bg-300 {
-    background-size: 300% 300%;
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
   
   .glass-card {
-    @apply bg-black/20 backdrop-blur-md border border-blue-900/20 rounded-xl shadow-lg;
+    @apply bg-card/60 backdrop-blur-md border border-border rounded-xl;
   }
   
   .skill-bar {
@@ -120,6 +116,14 @@
   }
 
   .section {
-    @apply py-20 px-4 md:px-8 max-w-7xl mx-auto;
+    @apply py-24 px-6 md:px-12 max-w-7xl mx-auto;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-5xl font-bold mb-4;
+  }
+
+  .section-divider {
+    @apply h-1 w-16 bg-primary rounded-full;
   }
 }

@@ -1,85 +1,94 @@
 
-import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { GithubIcon, LinkedinIcon, InstagramIcon, ArrowDownIcon } from "lucide-react";
+import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
-  // Add smooth scroll behavior when component mounts
+  const [scrollY, setScrollY] = useState(0);
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
-    
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       document.documentElement.style.scrollBehavior = "auto";
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center relative overflow-hidden pt-20">
-      {/* Background gradient elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/10 rounded-full filter blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-accent/10 rounded-full filter blur-3xl -z-10" />
-      
-      <div className="container mx-auto px-6 md:px-8 flex flex-col items-center text-center max-w-5xl">
-        <div className="flex flex-col md:flex-row w-full items-center md:items-start justify-center gap-10 mb-8">
-          {/* Photo on the left - now bigger */}
-          <div className="avatar-container relative group order-2 md:order-1">
-            {/* Enhanced dynamic glow effect with animation */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-700 rounded-full opacity-0 group-hover:opacity-70 
-              transition-all duration-500 blur-lg scale-90 group-hover:scale-125 -z-10 animate-pulse"></div>
-            {/* Secondary glow layer for more depth */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full opacity-0 group-hover:opacity-60 
-              transition-all duration-700 delay-75 blur-xl scale-75 group-hover:scale-110 -z-10"></div>
-            {/* Larger avatar with enhanced hover effect */}
-            <Avatar className="w-48 h-48 md:w-72 md:h-72 border-2 border-primary shadow-lg transition-all duration-500 
-              group-hover:scale-110 group-hover:border-accent group-hover:shadow-xl">
-              <AvatarImage src="/Pictures/5e422a5a-bd4f-4bec-80d3-b42ab5fda13e.png" alt="Harish" />
-              <AvatarFallback>H</AvatarFallback>
-            </Avatar>
-          </div>
-          
-          {/* Name and intro content */}
-          <div className="flex flex-col md:text-left text-center order-1 md:order-2">
-            <h2 className="text-xl md:text-2xl font-medium text-primary/80 mb-2 animate-fade-in">
-              Welcome, I'm
+    <section className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Decorative circles */}
+      <div className="absolute top-24 right-[35%] w-16 h-16 border-2 border-accent rounded-full opacity-60 animate-pulse" />
+      <div className="absolute top-36 right-[28%] w-8 h-8 bg-accent rounded-full opacity-80" />
+      <div className="absolute bottom-32 left-[10%] w-3 h-3 bg-primary rounded-full opacity-60" />
+
+      <div className="container mx-auto px-6 md:px-8">
+        {/* Profile Photo - positioned below navbar/gmail area */}
+        <div
+          className="absolute top-16 left-1/2 -translate-x-1/2 z-0 pointer-events-none"
+          style={{ transform: `translateX(-50%) translateY(${scrollY * 0.18}px)` }}
+        >
+          <img 
+            src={profileImage} 
+            alt="Harish" 
+            className="w-72 md:w-[24rem] lg:w-[28rem] rounded-2xl object-contain opacity-90" 
+          />
+        </div>
+
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[80vh]">
+          {/* Left Column - Intro */}
+          <div className="flex flex-col justify-center text-center md:text-left">
+            <h2 className="text-lg md:text-xl font-medium text-foreground/70 mb-3 animate-fade-in">
+              Hi,
             </h2>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <span className="gradient-text">Harish</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 animate-fade-in" style={{ animationDelay: "0.15s" }}>
+              I'm <span id="hero-name" className="text-primary">Harish</span>
             </h1>
-            
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              Crafting Intelligent AI Systems & Innovative Tech Solutions
+            <h3 className="text-xl md:text-2xl font-medium text-foreground/80 mb-10 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              AI/ML Developer & Tech Innovator
             </h3>
             
-            <p className="text-lg md:text-xl text-muted-foreground mb-12 animate-fade-in leading-relaxed" style={{ animationDelay: "0.6s" }}>
-              A dedicated Computer Science professional specializing in AI/ML and voice assistant technologies.
-              I transform complex challenges into elegant, user-focused applications that make a meaningful impact.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-5 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-              <Button asChild size="lg" className="text-lg px-8">
-                <a href="#projects">
-                  View Projects
-                  <ArrowRightIcon className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-              
-              <Button asChild variant="outline" size="lg" className="text-lg px-8">
-                <a href="#contact">Get in Touch</a>
-              </Button>
+            {/* Social links */}
+            <div className="flex gap-4 animate-fade-in justify-center md:justify-start" style={{ animationDelay: "0.5s" }}>
+              <a href="https://github.com/harishd-dev" target="_blank" rel="noopener noreferrer"
+                className="p-3 text-foreground/50 hover:text-primary hover:scale-125 transition-all duration-300 hover:-translate-y-1">
+                <GithubIcon className="h-5 w-5" />
+              </a>
+              <a href="https://www.linkedin.com/in/harishd-dev/" target="_blank" rel="noopener noreferrer"
+                className="p-3 text-foreground/50 hover:text-primary hover:scale-125 transition-all duration-300 hover:-translate-y-1">
+                <LinkedinIcon className="h-5 w-5" />
+              </a>
+              <a href="https://www.instagram.com/_harish.ps_/" target="_blank" rel="noopener noreferrer"
+                className="p-3 text-foreground/50 hover:text-primary hover:scale-125 transition-all duration-300 hover:-translate-y-1">
+                <InstagramIcon className="h-5 w-5" />
+              </a>
             </div>
+          </div>
+          
+          {/* Right Column - Expert Info */}
+          <div className="flex flex-col justify-center text-center md:text-left">
+            <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              Expert on
+            </p>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-fade-in leading-tight" style={{ animationDelay: "0.35s" }}>
+              Building AI Systems & Innovative Solutions.
+            </h2>
+            <p className="text-foreground/50 mb-8 animate-fade-in leading-relaxed" style={{ animationDelay: "0.5s" }}>
+              A dedicated Computer Science professional specializing in AI/ML and voice assistant technologies. 
+              Let's build something amazing together.
+            </p>
           </div>
         </div>
       </div>
       
-      {/* Enhanced scroll indicator with more dynamic animation */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer" 
-           onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-        <div className="w-1 h-16 relative">
-          <div className="absolute top-0 w-1 h-8 bg-gradient-to-b from-primary to-transparent rounded-full animate-pulse"></div>
-        </div>
-      </div>
+      {/* Scroll down indicator */}
+      <a href="#about" 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground/40 hover:text-primary transition-colors animate-fade-in"
+        style={{ animationDelay: "1s" }}>
+        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <ArrowDownIcon className="h-4 w-4 animate-bounce" />
+      </a>
     </section>
   );
 };
