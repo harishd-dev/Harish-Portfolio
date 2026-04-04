@@ -24,28 +24,37 @@ const HeroSection = () => {
       <div className="absolute bottom-32 left-[10%] w-3 h-3 bg-primary rounded-full opacity-60" />
 
       <div className="container mx-auto px-6 md:px-8">
-        {/* Profile Photo - positioned below navbar/gmail area */}
+        {/* Profile Photo - background on md+, inline on mobile */}
         <div
-          className="absolute top-16 left-1/2 -translate-x-1/2 z-0 pointer-events-none"
+          className="hidden md:block absolute top-16 left-1/2 -translate-x-1/2 z-0 pointer-events-none"
           style={{ transform: `translateX(-50%) translateY(${scrollY * 0.18}px)` }}
         >
           <img 
             src={profileImage} 
             alt="Harish" 
-            className="w-72 md:w-[24rem] lg:w-[28rem] rounded-2xl object-contain opacity-90" 
+            className="w-[24rem] lg:w-[28rem] rounded-2xl object-contain opacity-90" 
           />
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-[80vh]">
+        <div className="relative z-10 flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 items-center min-h-[80vh] pt-20 md:pt-0">
+          {/* Mobile photo */}
+          <div className="md:hidden flex justify-center animate-fade-in mb-2">
+            <img 
+              src={profileImage} 
+              alt="Harish" 
+              className="w-48 sm:w-56 rounded-2xl object-contain opacity-90" 
+            />
+          </div>
+
           {/* Left Column - Intro */}
           <div className="flex flex-col justify-center text-center md:text-left">
-            <h2 className="text-lg md:text-xl font-medium text-foreground/70 mb-3 animate-fade-in">
+            <h2 className="text-lg md:text-xl font-medium text-foreground/70 mb-2 md:mb-3 animate-fade-in">
               Hi,
             </h2>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 animate-fade-in" style={{ animationDelay: "0.15s" }}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-2 md:mb-3 animate-fade-in" style={{ animationDelay: "0.15s" }}>
               I'm <span id="hero-name" className="text-primary">Harish</span>
             </h1>
-            <h3 className="text-xl md:text-2xl font-medium text-foreground/80 mb-10 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-foreground/80 mb-6 md:mb-10 animate-fade-in" style={{ animationDelay: "0.3s" }}>
               AI/ML Developer & Tech Innovator
             </h3>
             
@@ -71,10 +80,10 @@ const HeroSection = () => {
             <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-3 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Expert on
             </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-fade-in leading-tight" style={{ animationDelay: "0.35s" }}>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 animate-fade-in leading-tight" style={{ animationDelay: "0.35s" }}>
               Building AI Systems & Innovative Solutions.
             </h2>
-            <p className="text-foreground/50 mb-8 animate-fade-in leading-relaxed" style={{ animationDelay: "0.5s" }}>
+            <p className="text-foreground/50 text-sm md:text-base mb-6 md:mb-8 animate-fade-in leading-relaxed" style={{ animationDelay: "0.5s" }}>
               A dedicated Computer Science professional specializing in AI/ML and voice assistant technologies. 
               Let's build something amazing together.
             </p>
