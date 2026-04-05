@@ -36,7 +36,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="relative z-10 flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 items-center min-h-[80vh] pt-20 md:pt-0">
+        <div className="relative z-10 flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 items-center min-h-[80vh] pt-20 md:pt-0 pb-20 md:pb-0">
           {/* Mobile photo */}
           <div className="md:hidden flex justify-center animate-fade-in mb-2">
             <img 
